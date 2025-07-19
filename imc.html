@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador IMC</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <section class="card">
+        <!-- Titulo -->
+        <div>
+            <h1>Calculadora de IMC</h1>
+        </div>
+        <!-- Area para pegar os dados da pessoa -->
+        <div>
+            <div>
+                <label for="altura">Altura em centimetros</label>
+                <input id="altura" type="number" min="100" max="250" value="">
+            </div>
+            <div>
+                <label for="peso">Peso em quilos</label>
+                <input id="peso" type="number" min="30" max="300" step="0.5">
+            </div>
+            <div>
+                <button onclick="calcularImc();">Calcular IMC</button>
+            </div>
+            <div>
+                <p><strong>Resultado IMC:</strong></p>
+                <h2 id="resultado">&nbsp;</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Codigo em JS -->
+    <script>
+        // Verificar se o JS esta rodando
+        console.log("Hello World!!!");
+
+        // Criar Função
+        function calcularImc() {
+            console.log('executou a função!!!');
+            let altura;
+            let peso;
+            let imc;
+            // Outra maneira de criar as variaveis
+            // let altura, peso, imc;
+            altura = document.getElementById("altura").value;
+            altura = altura / 100;
+            peso = document.getElementById("peso").value;
+            imc = peso / (altura * altura);
+            //imc = peso / (altura ** 2);
+            console.log(altura);
+            console.log(peso);
+            console.log(imc.toFixed(2));
+            document.getElementById("resultado").innerHTML =
+                imc.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>
