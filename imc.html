@@ -27,10 +27,12 @@
             </div>
             <div>
                 <button onclick="calcularImc();">Calcular IMC</button>
+                <button onclick="imprimirAltura();">Imprimir</button>
             </div>
             <div>
                 <p><strong>Resultado IMC:</strong></p>
                 <h2 id="resultado">&nbsp;</h2>
+                <p id="classificacao">&nbsp;</p>
             </div>
         </div>
     </section>
@@ -39,11 +41,10 @@
     <script>
         // Verificar se o JS esta rodando
         console.log("Hello World!!!");
-
+        let altura;
         // Criar Função
         function calcularImc() {
             console.log('executou a função!!!');
-            let altura;
             let peso;
             let imc;
             // Outra maneira de criar as variaveis
@@ -56,9 +57,28 @@
             console.log(altura);
             console.log(peso);
             console.log(imc.toFixed(2));
+            imc = Number.parseFloat(imc.toFixed(2));
             document.getElementById("resultado").innerHTML =
-                imc.toFixed(2);
+                imc.toLocaleString("pt-BR");
+            let $classificacao;
+            if (imc < 18.5) {
+                $classificacao = "Baixo peso";
+            }
+            else if (imc < 25) { $classificacao = "Normal"; }
+            else if (imc < 30) { $classificacao = "Sobrepeso"; }
+            else if (imc < 35) { $classificacao = "Obesidade I";}
+            else if (imc < 40) { $classificacao = "Obesidade II";}
+            else { $classificacao = "<b>Obesidade III</b>"; }
+            document.getElementById("classificacao").innerHTML = 
+                $classificacao;
         }
+
+        function imprimirAltura()
+        {
+            console.log(altura);
+        }
+
+        console.log(altura);
     </script>
 </body>
 
